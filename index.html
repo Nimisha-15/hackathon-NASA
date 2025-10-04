@@ -188,6 +188,16 @@
             padding: 20px;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
+        
+        /* Date input styling */
+        input[type="date"] {
+            color-scheme: dark;
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-white overflow-x-hidden">
@@ -334,15 +344,8 @@
                             
                             <div>
                                 <label class="block text-lg font-bold mb-4 text-blue-300 orbitron">📅 MISSION DATE</label>
-                                <div class="relative">
-                                    <input type="date" id="eventDate" 
-                                           class="w-full px-6 py-4 bg-slate-800/50 border-2 border-blue-500/30 rounded-xl text-white focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300">
-                                    <div class="absolute right-4 top-4 text-blue-400">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                    </div>
-                                </div>
+                                <input type="date" id="eventDate" 
+                                       class="w-full px-6 py-4 bg-slate-800/50 border-2 border-blue-500/30 rounded-xl text-white focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300">
                             </div>
                         </div>
                         
@@ -747,7 +750,7 @@
                     <h4 class="text-xl font-bold text-blue-300 orbitron mb-6">DATA SOURCES</h4>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-3">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiMwMDY2Q0MiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptLTIgMTVsLTUtNSAxLjQxLTEuNDFMMTAgMTQuMTdsNy41OS03LjU5TDE5IDhsLTkgOXoiLz4KPC9zdmc+Cjwvc3ZnPgo=" alt="NASA" class="w-8 h-8">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">N</div>
                             <div>
                                 <p class="text-white font-semibold">NASA POWER API</p>
                                 <p class="text-slate-400 text-sm">Real-time satellite data</p>
@@ -1187,9 +1190,11 @@
         // Event type selection
         document.querySelectorAll('input[name="eventType"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                document.querySelectorAll('label[for]').forEach(label => {
-                    label.classList.remove('border-blue-400', 'bg-blue-500/20');
-                    label.classList.add('border-blue-500/30');
+                document.querySelectorAll('label').forEach(label => {
+                    if (label.querySelector('input[name="eventType"]')) {
+                        label.classList.remove('border-blue-400', 'bg-blue-500/20');
+                        label.classList.add('border-blue-500/30');
+                    }
                 });
                 
                 this.parentElement.classList.remove('border-blue-500/30');
@@ -1250,5 +1255,5 @@
             parallax.style.transform = `translateY(${speed}px)`;
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9896380d0303a46b',t:'MTc1OTU5NzA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9896530ad2176efe',t:'MTc1OTU5ODE1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
